@@ -24,6 +24,152 @@ The analysis will support data-driven decisions around marketing, retention, and
 
 ---
 
+## 📂 Dataset Overview
+
+This project uses the **Olist Brazilian E-Commerce dataset**, a real-world public dataset that contains transactional data from a large online marketplace in Brazil.
+
+The dataset includes detailed information about customers, orders, products, sellers, payments, reviews, and geolocation. It is structured across multiple relational tables, which makes it suitable for practicing real-world SQL joins, KPI calculation, and business analysis.
+
+**Source:** Kaggle — Olist Brazilian E-Commerce Dataset  
+**Time Period Covered:** 2016 – 2018  
+**Total Orders:** ~100,000  
+**Total Tables:** 9 relational tables  
+**Granularity:** Order-level and item-level transactions
+  I selected this dataset because it allows deep SQL-based business analysis across multiple connected tables and supports advanced analytical queries, cohort analysis, KPI tracking, and customer behavior insights.
+
+---
+
+# 📊 Dataset Schema — Brazilian E-Commerce (Olist)
+
+This project uses the Olist Brazilian E-Commerce dataset, which contains real transactional data from an online marketplace.  
+The dataset is structured in multiple relational tables, similar to a real production database.
+
+---
+
+## 🧾 Orders Table — `olist_orders_dataset.csv`
+Contains the main order lifecycle and timestamps.
+
+| Column | Description |
+|---------|-------------|
+order_id | Unique order identifier |
+customer_id | Customer who placed the order |
+order_status | Order status (delivered, shipped, canceled, etc.) |
+order_purchase_timestamp | Order purchase time |
+order_approved_at | Payment approval time |
+order_delivered_carrier_date | Handed to logistics partner |
+order_delivered_customer_date | Delivered to customer |
+order_estimated_delivery_date | Estimated delivery date |
+
+---
+
+## 👤 Customers Table — `olist_customers_dataset.csv`
+Customer identity and location information.
+
+| Column | Description |
+|---------|-------------|
+customer_id | Order-level customer ID |
+customer_unique_id | Unique customer across all orders |
+customer_zip_code_prefix | ZIP prefix |
+customer_city | City |
+customer_state | State |
+
+---
+
+## 🛒 Order Items Table — `olist_order_items_dataset.csv`
+Products included in each order.
+
+| Column | Description |
+|---------|-------------|
+order_id | Order identifier |
+order_item_id | Item sequence within order |
+product_id | Product identifier |
+seller_id | Seller identifier |
+shipping_limit_date | Shipping deadline |
+price | Item price |
+freight_value | Shipping cost |
+
+---
+
+## 💳 Payments Table — `olist_order_payments_dataset.csv`
+Payment transaction details.
+
+| Column | Description |
+|---------|-------------|
+order_id | Order identifier |
+payment_sequential | Payment sequence number |
+payment_type | Payment method |
+payment_installments | Installments count |
+payment_value | Amount paid |
+
+---
+
+## ⭐ Reviews Table — `olist_order_reviews_dataset.csv`
+Customer review and rating data.
+
+| Column | Description |
+|---------|-------------|
+review_id | Review identifier |
+order_id | Order identifier |
+review_score | Rating (1–5) |
+review_comment_title | Review title |
+review_comment_message | Review text |
+review_creation_date | Review date |
+review_answer_timestamp | Seller response time |
+
+---
+
+## 📦 Products Table — `olist_products_dataset.csv`
+Product characteristics.
+
+| Column | Description |
+|---------|-------------|
+product_id | Product identifier |
+product_category_name | Category (Portuguese) |
+product_name_lenght | Name length |
+product_description_lenght | Description length |
+product_photos_qty | Photo count |
+product_weight_g | Weight |
+product_length_cm | Length |
+product_height_cm | Height |
+product_width_cm | Width |
+
+---
+
+## 🧑‍💼 Sellers Table — `olist_sellers_dataset.csv`
+Seller location details.
+
+| Column | Description |
+|---------|-------------|
+seller_id | Seller identifier |
+seller_zip_code_prefix | ZIP prefix |
+seller_city | City |
+seller_state | State |
+
+---
+
+## 🌍 Geolocation Table — `olist_geolocation_dataset.csv`
+ZIP prefix to latitude/longitude mapping.
+
+| Column | Description |
+|---------|-------------|
+geolocation_zip_code_prefix | ZIP prefix |
+geolocation_lat | Latitude |
+geolocation_lng | Longitude |
+geolocation_city | City |
+geolocation_state | State |
+
+---
+
+## 🌐 Category Translation — `product_category_name_translation.csv`
+Portuguese → English category mapping.
+
+| Column | Description |
+|---------|-------------|
+product_category_name | Original category |
+product_category_name_english | English name |
+
+---
+
 ## Business Questions (Scope of Analysis)
 
 ### Revenue & Sales Performance
